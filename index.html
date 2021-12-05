@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <title>Study Corner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="container">
+
+        <div id="tasks"></div>
+        
+        <div id="tools">
+            <br>
+            <h2>Tools</h2>
+            <br>
+            <div class="tool-container">
+                <button onclick="changeBackground()" class="tool"><img class="icon" src="icons/background.png"></button>
+                <h3>Background</h3>
+            </div>
+            <br>
+            <div class="tool-container">
+                <button onclick="displayTimer()" class="tool"><img class="icon" src="icons/timer.png"></button>
+                <h3>Timer</h3>
+            </div>
+            <br>
+            <div class="tool-container">
+                <button class="tool"><img class="icon" src="icons/stopwatch.png"></button>
+                <h3>Stopwatch</h3>
+            </div>
+            <br>
+            <div class="tool-container">
+                <button class="tool"><img class="icon" src="icons/tasks.png"></button>
+                <h3>Tasks</h3>
+            </div>
+            <br>
+        </div>
+        <div id="timer" style="display:none;" onmousedown="dragTimer()">
+            <div id="chooseTimer">
+                <label for="time">Choose:</label>
+                <select name="minutes" id="selectMinutes"></select>
+                <select name="seconds" id="selectSeconds"></select>
+            </div>
+            <button onclick="displayTimer()" id="hideTimer">X</button>
+            <h4 id="countdown">00:00</h4>
+            <div id="timerButtons">
+                <button onclick="startTimer()" class="start">start</button>
+                <button onClick="stopTimer()" class="stop">stop</button>
+                <button onClick="resumeTimer()" class="resume">resume</button>
+                <button onClick="resetTimer()" class="reset">reset</button>
+            </div>
+       
+           
+        </div>
+        <div id="stopwatch"></div>
+    </div>
+</body>
+</html>
