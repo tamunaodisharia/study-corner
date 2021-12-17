@@ -13,8 +13,6 @@
 </head>
 <body>
     <div id="container">
-
-        <div id="tasks"></div>
         
         <div id="tools">
             <br>
@@ -36,11 +34,12 @@
             </div>
             <br>
             <div class="tool-container">
-                <button class="tool"><img class="icon" src="icons/tasks.png"></button>
+                <button onclick="displayTasks()" class="tool"><img class="icon" src="icons/tasks.png"></button>
                 <h3>Tasks</h3>
             </div>
             <br>
         </div>
+
         <div id="timer" style="display:none;" onmousedown="dragItem(this.id)">
             <div id="chooseTimer">
                 <label class="label" for="time">Timer:</label>
@@ -56,6 +55,7 @@
                 <button onClick="resetTimer()" class="reset">reset</button>
             </div>
         </div>
+
         <div id="stopwatch" style="display:none;" onmousedown="dragItem(this.id)">
            <h3 class="label">Stopwatch</h3>
             <button onclick="displayStopwatch()" class="hideComponent">_</button>
@@ -66,6 +66,18 @@
                 <button onClick="resumeStopwatch()" class="resume">resume</button>
                 <button onClick="resetStopwatch()" class="reset">reset</button>
             </div>
+        </div>
+        
+        <div id="tasks" class="header" style="display:none;" onmousedown="dragItem(this.id)">
+            <h3 class="label">To Do List</h3>
+            <button onclick="displayTasks()" class="hideComponent">_</button>
+           
+                <input type="text" id="myInput" placeholder="Title...">
+                <span onclick="newTask()" class="addBtn">Add</span>
+         
+                <ul id="myUL">
+                   
+                </ul>
         </div>
     </div>
 </body>
