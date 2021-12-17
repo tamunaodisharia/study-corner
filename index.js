@@ -1,8 +1,5 @@
+//Change background
 var background=0;
-let time;
-let stopwatchTime=0;
-let countdownElement;
-var interval;
 function changeBackground(){
     background++;
     if(background>8){
@@ -16,17 +13,15 @@ function changeBackground(){
 var pos1=0,pos2=0,pos3=0,pos4=0;
 var elmnt;
 var z=0;
-function dragItem(element,e){
-    //elmnt=document.getElementById("timer");
+function dragItem(element,e){     //element=this.id
     elmnt = document.getElementById(element);
     e = e || window.event;
-   // e.preventDefault();
+   //e.preventDefault();
     // get the mouse cursor position at startup:
     pos3 = e.clientX;
     pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
+    document.onmouseup = closeDragElement;   // stop dragging
+    document.onmousemove = elementDrag;    //call function everytime mouse moves
 }
 function elementDrag(e) {
     e = e || window.event;
@@ -36,8 +31,8 @@ function elementDrag(e) {
     pos2 = pos4 - e.clientY;
     pos3 = e.clientX;
     pos4 = e.clientY;
+    elmnt.style.zIndex=++z;     //make z index bigger
     // set the element's new position:
-    elmnt.style.zIndex=++z;
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
   }
@@ -49,13 +44,18 @@ function elementDrag(e) {
 ///////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////// TIMER ////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////
+let time;
+let countdownElement;
+var interval;
 function displayTimer(){
     var x = document.getElementById("timer");
-        if (x.style.display === "none") {
-          x.style.display = "block";
-        } else {
-          x.style.display = "none";
-        }
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+
+    //initialize select tags:
     var selectMinutes=document.getElementById("selectMinutes");
     var selectSeconds=document.getElementById("selectSeconds");
     for (var i = 0; i<=60; i++){
@@ -127,7 +127,8 @@ function resumeTimer(){
 //////////////////////////////////////////////////////////////////////////////////////
 var swInterval;
 var swTime=0;
-var swElement
+var swElement;
+let stopwatchTime=0;
 function displayStopwatch(){
     var x = document.getElementById("stopwatch");
     if (x.style.display === "none") {
@@ -146,7 +147,6 @@ function startStopwatch(){
     }
 }
 function updateStopwatch(){
-    console.log("update function was called");
     let hours=Math.floor(swTime/3600);
     let minutes=Math.floor(swTime/60);
     let seconds=swTime % 60;
@@ -184,36 +184,11 @@ function displayTasks(){
     }
 }
 function enter(event){
-    // Number 13 is the "Enter" key on the keyboard
-  if (event.keyCode === 13) {
-    // Cancel the default action, if needed
+  if (event.keyCode === 13) { //check if the key is 'enter'
     event.preventDefault();
-    // Trigger the button element with a click
     newTask();
   }
 }
-// Create a "close" button and append it to each list item
-var myNodelist = document.getElementsByTagName("LI");
-var i;
-for (i = 0; i < myNodelist.length; i++) {
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  myNodelist[i].appendChild(span);
-}
-
-// Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-  close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
-  }
-}
-
-
 // Create a new list item when clicking on the "Add" button
 function newTask() {
   var li = document.createElement("li");
@@ -237,7 +212,8 @@ function newTask() {
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
-
+  var close = document.getElementsByClassName("close");
+  var i;
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
