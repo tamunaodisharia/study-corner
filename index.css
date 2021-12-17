@@ -67,7 +67,7 @@ table {
 #tools{
     width:80px;
    /* height:200px;*/
-    background-color: gray;
+   background-color:rgb(87, 87, 136);
     border-radius: 15px;
     position:relative;
     left:92%;
@@ -99,7 +99,7 @@ h3{
     top:10px;
     left:65%;
     width:300px;
-    background-color: gray;
+    background-color:rgb(87, 87, 136);
     border-radius: 10px;
     
 }
@@ -127,6 +127,11 @@ h3{
     font-weight: 500;
     text-align: center;
 }
+#swCountdown{
+    font-size:70px;
+    font-weight: 500;
+    text-align: center;
+}
 #timerButtons{
     display: inline-block;
     position:relative;
@@ -141,12 +146,26 @@ h3{
     transform: translateX(-50%);
     font-size:25px;
 }
-#hideTimer{
+.hideComponent{
     font-size:15px;
+    font-weight:900;
     color:white;
     position:absolute;
-    top:7px;
+    top:6px;
     left:90%;
     background: transparent;
     border:none;
+}
+#stopwatch{
+    display:none;
+    position:absolute;
+    top:200px;
+    left:65%;
+    width:300px;
+    background-color:rgb(87, 87, 136);
+    border-radius: 10px;
+}
+.label{
+    margin-top:3px;
+    font-size:25px;
 }

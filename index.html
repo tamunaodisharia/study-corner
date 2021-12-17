@@ -31,7 +31,7 @@
             </div>
             <br>
             <div class="tool-container">
-                <button class="tool"><img class="icon" src="icons/stopwatch.png"></button>
+                <button  onclick="displayStopwatch()" class="tool"><img class="icon" src="icons/stopwatch.png"></button>
                 <h3>Stopwatch</h3>
             </div>
             <br>
@@ -41,13 +41,13 @@
             </div>
             <br>
         </div>
-        <div id="timer" style="display:none;" onmousedown="dragTimer()">
+        <div id="timer" style="display:none;" onmousedown="dragItem(this.id)">
             <div id="chooseTimer">
-                <label for="time">Choose:</label>
+                <label class="label" for="time">Timer:</label>
                 <select name="minutes" id="selectMinutes"></select>
                 <select name="seconds" id="selectSeconds"></select>
             </div>
-            <button onclick="displayTimer()" id="hideTimer">X</button>
+            <button onclick="displayTimer()" class="hideComponent">_</button>
             <h4 id="countdown">00:00</h4>
             <div id="timerButtons">
                 <button onclick="startTimer()" class="start">start</button>
@@ -55,10 +55,18 @@
                 <button onClick="resumeTimer()" class="resume">resume</button>
                 <button onClick="resetTimer()" class="reset">reset</button>
             </div>
-       
-           
         </div>
-        <div id="stopwatch"></div>
+        <div id="stopwatch" style="display:none;" onmousedown="dragItem(this.id)">
+           <h3 class="label">Stopwatch</h3>
+            <button onclick="displayStopwatch()" class="hideComponent">_</button>
+            <h4 id="swCountdown">00:00:00</h4>
+            <div id="swButtons">
+                <button onclick="startStopwatch()" class="start">start</button>
+                <button onClick="stopStopwatch()" class="stop">stop</button>
+                <button onClick="resumeStopwatch()" class="resume">resume</button>
+                <button onClick="resetStopwatch()" class="reset">reset</button>
+            </div>
+        </div>
     </div>
 </body>
 </html>
