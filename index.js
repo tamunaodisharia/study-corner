@@ -176,13 +176,21 @@ function resumeStopwatch(){
 /////////////////////////////////////// TASKS ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 function displayTasks(){
-    console.log("display worked");
     var x = document.getElementById("tasks");
     if (x.style.display === "none") {
         x.style.display = "block";
     } else {
         x.style.display = "none";
     }
+}
+function enter(event){
+    // Number 13 is the "Enter" key on the keyboard
+  if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    newTask();
+  }
 }
 // Create a "close" button and append it to each list item
 var myNodelist = document.getElementsByTagName("LI");
@@ -205,13 +213,6 @@ for (i = 0; i < close.length; i++) {
   }
 }
 
-// Add a "checked" symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
 
 // Create a new list item when clicking on the "Add" button
 function newTask() {
@@ -219,8 +220,13 @@ function newTask() {
   var inputValue = document.getElementById("myInput").value;
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
+  li.addEventListener('click', function(ev) {
+    if (ev.target.tagName === 'LI') {
+      ev.target.classList.toggle('checked');
+    }
+  }, false);
   if (inputValue === '') {
-    alert("You must write something!");
+    alert("Task can't be blank!");
   } else {
     document.getElementById("myUL").appendChild(li);
   }
@@ -238,4 +244,15 @@ function newTask() {
       div.style.display = "none";
     }
   }
+}
+///////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////// AUDIO ////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
+function displayAudio(){
+    var x = document.getElementById("audio");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
 }
