@@ -1,3 +1,9 @@
+document.addEventListener('visibilitychange', function (event) {
+    if (!document.hidden) {
+        document.title=`Study Corner`;
+    }
+});
+
 //Change background
 var background=0;
 function changeBackground(){
@@ -47,6 +53,29 @@ function elementDrag(e) {
 let time;
 let countdownElement;
 var interval;
+var flashInterval;
+var timeout
+var flash;
+function flashTimer1(){
+    document.title=flash;
+    switch(flash){
+        case "00:00": 
+            flash="Study Corner";
+            break;
+        case "Study Corner":
+            flash="00:00";
+            break;
+    }
+}
+document.addEventListener('visibilitychange', function (event) {
+    if (!document.hidden) {
+        if(flashInterval){
+            document.title=`Study Corner`;
+            clearInterval(flashInterval);
+            flashInterval=undefined;
+        }
+    }
+});
 function displayTimer(){
     var x = document.getElementById("timer");
     if (x.style.display === "none") {
@@ -94,15 +123,28 @@ function startTimer(){
        }
     }
 }
+
 function updateCountdown(){
    let minutes=Math.floor(time/60);
    let seconds=time % 60;
    minutes = minutes < 10 ? '0' + minutes : minutes;
     seconds = seconds < 10 ? '0' + seconds : seconds;
    countdownElement.innerHTML= `${minutes}:${seconds}`;
+   if (document.hidden) {
+        document.title=`${minutes}:${seconds}`;
+    }else{
+        document.title="Study Corner";
+    }
     time--;
+   
     if(time<0){
         clearInterval(interval);
+        if(document.hidden){
+            document.title="Study Corner";
+            flash="00:00"
+            flashInterval = setInterval(flashTimer1,700);
+           
+        }
     }
 }
 function stopTimer(){

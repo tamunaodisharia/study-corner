@@ -37,7 +37,7 @@
                 <button onclick="displayTasks()" class="tool"><img class="icon" src="icons/tasks.png"></button>
                 <h3>Tasks</h3>
             </div>
-            <div class="tool-container">
+            <div class="tool-container" id="audioTool">
                
                 <button onclick="displayAudio()" class="tool"><img class="icon" src="icons/audio.png"></button>
                 <h3>Audio</h3>
@@ -78,14 +78,14 @@
             <h3 class="label">To Do List</h3>
             <button onclick="displayTasks()" class="hideComponent">_</button>
            
-                <input type="text" id="myInput" placeholder="Title..." onkeyup="enter(event)">
-                <span onclick="newTask()" class="addBtn">Add</span>
+            <input type="text" id="myInput" placeholder="Title..." onkeyup="enter(event)">
+            <span onclick="newTask()" class="addBtn">Add</span>
          
-                <ul id="myUL">
-                   
-                </ul>
+            <ul id="myUL">
+            </ul>
         </div>
         <div id="audio" style="display:none;" onmousedown="dragItem(this.id)">
+            <button onclick="displayAudio()" class="hideComponent" id="hideAudio">-</button>
             <iframe width="336" height="189" src="https://www.youtube.com/embed/5qap5aO4i9A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
     </div>
